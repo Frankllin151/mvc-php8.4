@@ -11,7 +11,7 @@ $router = App::getInstance()->getRouter();
 $router->get("/api", function($request, $response) {
     $response->json([
         "message" => "Bem-Vindo á api",
-        "PHP_VERSION" => phpinfo(),
+        "PHP_VERSION" => "PHP_8.4.6",
         "status" => "OK"
     ]); 
 });

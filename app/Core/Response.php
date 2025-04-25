@@ -18,6 +18,7 @@ class Response
     public function json($data, int $statusCode = 200): void
     {
         $this->setStatusCode($statusCode);
+        header("Access-Control-Allow-Origin: localhost:3000");
         header('Content-Type: application/json');
         echo json_encode($data);
         exit;
