@@ -2,6 +2,7 @@
 
 namespace App\Core;
 
+use App\Middleware\CorsMiddleware;
 class Response
 {
     public function setStatusCode(int $code)
@@ -17,11 +18,14 @@ class Response
     
     public function json($data, int $statusCode = 200): void
     {
-        $this->setStatusCode($statusCode);
-        header("Access-Control-Allow-Origin: localhost:3000");
-        header('Content-Type: application/json');
-        echo json_encode($data);
-        exit;
+       
+            $this->setStatusCode($statusCode);
+            CorsMiddleware::handle();
+            header('Content-Type: application/json');
+            echo json_encode($data);
+            exit;
+        
+       
     }
     
     public function render(string $view, array $data = []): void
